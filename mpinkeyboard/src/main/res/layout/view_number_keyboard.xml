@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/keyboard_root"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingTop="12dp"
+    android:paddingBottom="24dp"
+    android:gravity="center">
+
+    <!-- 3 columns grid -->
+    <GridLayout
+        android:id="@+id/keys_grid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:columnCount="3"
+        android:rowCount="4"
+        android:alignmentMode="alignMargins"
+        android:useDefaultMargins="true"
+        android:paddingLeft="24dp"
+        android:paddingRight="24dp"
+        >
+
+        <!-- We'll inflate view_number_key for each key in code for flexibility -->
+    </GridLayout>
+
+    <!-- bottom row: empty / zero / delete/call -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingTop="8dp">
+
+        <!-- left spacer (optional action) -->
+        <FrameLayout
+            android:id="@+id/left_action"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:foreground="?attr/selectableItemBackgroundBorderless"
+            android:padding="8dp" />
+
+        <!-- zero key placed in grid if you want; we will use grid for 1-9 and put 0 and actions here -->
+        <include
+            layout="@layout/view_number_key"
+            android:id="@+id/key_zero_include"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <!-- Delete / Call buttons stacked horizontally -->
+            <ImageButton
+                android:id="@+id/btn_delete"
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:src="@drawable/ic_backspace"
+                android:contentDescription="Delete"
+                app:tint="#666" />
+
+            <Button
+                android:id="@+id/btn_call"
+                android:layout_width="72dp"
+                android:layout_height="56dp"
+                android:layout_marginStart="8dp"
+                android:text="Call"
+                android:textColor="@android:color/white"
+                android:textStyle="bold"
+                android:visibility="gone"/>
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>
